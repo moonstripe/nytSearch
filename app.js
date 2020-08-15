@@ -12,7 +12,7 @@ $('#submit-query').on('click', function (e) {
    var results = $('#results').val();
    var startyear = $('#startyear').val();
    var endyear = $('#endyear').val();
-   $('#search-results').empty();
+   $('#result-list').empty();
    searchArticle(query, results,startyear, endyear);
 })
 
@@ -27,7 +27,17 @@ function searchArticle(query, results, startyear = 2020, endyear = 2020) {
             const element = response.response.docs[index];
 
             console.log(element);
-            $('#search-results').append($('<li>').text(element.headline.main));
+            const $result = $('<li>').attr('id', parseInt([index])+1);
+            const $content = $('<div>').addClass('card');
+            const $title = $('<a>').attr('href', element.web_url).attr('target', '_blank').append($('<h4>').text(element.headline.main));
+            const $byline = $('<p>').text(element.byline.original);
+            const $date = $('<p>').text(moment(element.pub_date).format('MMM Do, YYYY'));
+
+            $content.append($title).append($date).append($byline);
+            $result.append($content);
+
+
+            $('#result-list').append($result);
             
         }
     });
