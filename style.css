@@ -1,0 +1,12 @@
+::before {
+
+}
+
+li {
+    font-size: x-large;
+}
+
+.content-piece {
+    padding: 15px 15px;
+    margin-bottom: 15px;
+}

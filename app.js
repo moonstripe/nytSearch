@@ -28,7 +28,7 @@ function searchArticle(query, results, startyear = 2020, endyear = 2020) {
 
             console.log(element);
             const $result = $('<li>').attr('id', parseInt([index])+1);
-            const $content = $('<div>').addClass('card');
+            const $content = $('<div>').addClass('card content-piece');
             const $title = $('<a>').attr('href', element.web_url).attr('target', '_blank').append($('<h4>').text(element.headline.main));
             const $byline = $('<p>').text(element.byline.original);
             const $date = $('<p>').text(moment(element.pub_date).format('MMM Do, YYYY'));
